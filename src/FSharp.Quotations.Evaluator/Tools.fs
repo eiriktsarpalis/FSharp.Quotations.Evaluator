@@ -1,6 +1,6 @@
 ﻿module internal FSharp.Quotations.Evaluator.Tools
 
-open System.Linq.Expressions
+open Forked.Linq.Expressions
 open System
 open HelperTypes
 open System.Reflection

@@ -2,7 +2,7 @@
 
 open Xunit
 open System
-open System.Linq.Expressions
+open Forked.Linq.Expressions
 open FSharp.Quotations.Evaluator.Tools
 
 [<AutoOpen>]

@@ -3,7 +3,7 @@
 namespace FSharp.Quotations.Evaluator
 
     open System
-    open System.Linq.Expressions
+    open Forked.Linq.Expressions
 
     module ExtraHashCompare =
         /// An intrinsic for compiling <c>&lt;@ x <> y @&gt;</c> to expression trees
@@ -18,7 +18,7 @@ namespace FSharp.Quotations.Evaluator
         ///
         /// Exceptions: InvalidArgumentException will be raised if the input expression is
         /// not in the subset that can be converted to a LINQ expression tree
-        static member ToLinqExpression : FSharp.Quotations.Expr -> System.Linq.Expressions.Expression
+        static member ToLinqExpression : FSharp.Quotations.Expr -> Forked.Linq.Expressions.Expression
 
         /// Compile the quotation expression by first converting to LINQ expression trees
         /// The expression is currently always compiled.

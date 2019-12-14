@@ -7,7 +7,7 @@ namespace FSharp.Quotations.Evaluator
 
 open System
 open System.Collections.Generic
-open System.Linq.Expressions
+open Forked.Linq.Expressions
 open System.Reflection
 open FSharp.Reflection
 open FSharp.Quotations
