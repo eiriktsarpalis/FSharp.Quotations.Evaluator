@@ -1,5 +1,6 @@
 module FSharp.Quotations.Evaluator.Unittests
 
+open System.Reflection
 open System.Runtime.CompilerServices
 open Xunit
 open FSharp.Quotations
@@ -1369,6 +1370,13 @@ module CheckedTests =
          test "y12a" (y12a = 13.0f<m^4>)
          test "y13" (y13 = 2.5f<m^2>)
          test "y13a" (y13a = 6.5f<m^4>)
+
+    [<Fact>]
+    let SetReadOnlyFields () =
+        let v = (0,2)
+        let f = v.GetType().GetFields(BindingFlags.NonPublic ||| BindingFlags.Instance).[0]
+        Expr.FieldSet(Expr.Value v, f, Expr.Value 42) |> Expr.Cast<unit> |> eval
+        Assert.Equal(v, (42, 2))
           
 
     [<Fact>]

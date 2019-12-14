@@ -180,7 +180,7 @@ module QuotationEvaluationTypes =
             let minfo = propInfo.GetSetMethod(true)
             Expression.Call(ConvObjArg env objOpt None, minfo,argsP) |> wrapVoid |> asExpr
 
-        | Patterns.FieldSet(_,fieldInfo,_) when fieldInfo.IsInitOnly || fieldInfo.IsLiteral -> 
+        | Patterns.FieldSet(_,fieldInfo,_) when fieldInfo.IsLiteral -> 
             raise <| new NotSupportedException("Field-set expressions not supported for readonly or literal fields")
 
         | Patterns.FieldSet(objOpt,fieldInfo,v) ->
@@ -188,6 +188,7 @@ module QuotationEvaluationTypes =
             let vP = ConvExpr env v
             let assignment = Expression.Assign(fieldExpr, vP)
             Expression.Block(assignment, Expression.Constant((), typeof<unit>)) |> asExpr
+            Expression.Block(Expression.Assign(fieldExpr, vP), Expression.Constant(null, typeof<unit>)) |> asExpr
 
         // Expr.(Call,Application)
         | Patterns.Call(objOpt,minfo,args) -> 
