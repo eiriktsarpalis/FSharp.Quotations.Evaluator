@@ -188,7 +188,6 @@ module QuotationEvaluationTypes =
             let vP = ConvExpr env v
             let assignment = Expression.Assign(fieldExpr, vP)
             Expression.Block(assignment, Expression.Constant((), typeof<unit>)) |> asExpr
-            Expression.Block(Expression.Assign(fieldExpr, vP), Expression.Constant(null, typeof<unit>)) |> asExpr
 
         // Expr.(Call,Application)
         | Patterns.Call(objOpt,minfo,args) -> 
