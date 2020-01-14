@@ -270,7 +270,7 @@ comparand: null
                     {
                         Debug.Assert(member is FieldInfo);
                         FieldInfo field = (FieldInfo)member;
-                        if (!field.IsLiteral && !field.IsInitOnly)
+                        if (!field.IsLiteral)
                         {
                             return;
                         }
