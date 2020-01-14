@@ -1375,8 +1375,8 @@ module CheckedTests =
     let SetReadOnlyFields () =
         let v = (0,2)
         let f = v.GetType().GetFields(BindingFlags.NonPublic ||| BindingFlags.Instance).[0]
-        Expr.FieldSet(Expr.Value v, f, Expr.Value 42) |> Expr.Cast<unit> |> eval
-        Assert.Equal(v, (42, 2))
+        Expr.FieldSet(Expr.Value(v, v.GetType()), f, Expr.Value 42) |> Expr.Cast<unit> |> eval
+        Assert.Equal((42, 2), v)
           
 
     [<Fact>]
